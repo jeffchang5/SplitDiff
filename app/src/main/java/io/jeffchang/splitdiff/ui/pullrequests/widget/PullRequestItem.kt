@@ -1,4 +1,4 @@
-package io.jeffchang.splitdiff.ui.gitdiff.widget
+package io.jeffchang.splitdiff.ui.pullrequests.widget
 
 import android.content.Context
 import android.util.AttributeSet

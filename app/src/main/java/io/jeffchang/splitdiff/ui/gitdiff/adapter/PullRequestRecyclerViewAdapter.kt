@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.jeffchang.splitdiff.data.model.pullrequest.PullRequest
-import io.jeffchang.splitdiff.ui.gitdiff.widget.PullRequestItem
+import io.jeffchang.splitdiff.ui.pullrequests.widget.PullRequestItem
 
 class PullRequestRecyclerViewAdapter: RecyclerView.Adapter<
         PullRequestRecyclerViewAdapter.PullRequestViewHolder>() {
