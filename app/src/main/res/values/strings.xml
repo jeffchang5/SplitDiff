@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SplitDiff</string>
+    <string name="username">Username</string>
+    <string name="username_sample">jeffchang5</string>
+    <string name="repo">Repo</string>
+    <string name="repo_sample">jeffchang5.github.io</string>
+    <string name="next">Next</string>
 </resources>

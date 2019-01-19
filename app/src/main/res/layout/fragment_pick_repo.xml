@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/fragment_pick_repo_username_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textSize="@dimen/header"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/username" />
+
+    <EditText
+        android:id="@+id/fragment_pick_repo_username_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textSize="@dimen/header"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/fragment_pick_repo_username_text_view"
+        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/username_sample" />
+
+    <TextView
+        android:id="@+id/fragment_pick_repo_repo_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textSize="@dimen/header"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/fragment_pick_repo_username_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/repo" />
+
+    <EditText
+        android:id="@+id/fragment_pick_repo_repo_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textSize="@dimen/header"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:hint="@string/repo_sample"
+        app:layout_constraintTop_toBottomOf="@id/fragment_pick_repo_repo_text_view"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:id="@+id/fragment_pick_repo_next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/header"
+        android:textColor="@color/colorAccent"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:text="@string/next"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/fragment_pick_repo_repo_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <io.jeffchang.splitdiff.common.widget.LoadingView
+        android:id="@+id/fragment_word_search_loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,13 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_word_search"
+    android:id="@+id/nav_pull_request"
     app:startDestination="@id/pullRequestFragment">
 
     <fragment
         android:id="@+id/pullRequestFragment"
         android:name="io.jeffchang.splitdiff.ui.gitdiff.PullRequestFragment"
         android:label="WordSearchFragment"
-        tools:layout="@layout/fragment_pull_request"/>
+        tools:layout="@layout/fragment_pull_request" />
+
+    <fragment
+        android:id="@+id/pickRepoFragment"
+        android:name="io.jeffchang.splitdiff.ui.pickrepo.PickRepoFragment"
+        android:label="pickRepoFragment"
+        tools:layout="@layout/fragment_pick_repo" />
 
 </navigation>
