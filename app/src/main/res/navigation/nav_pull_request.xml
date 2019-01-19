@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_word_search"
+    app:startDestination="@id/pullRequestFragment">
+
+    <fragment
+        android:id="@+id/pullRequestFragment"
+        android:name="io.jeffchang.splitdiff.ui.gitdiff.PullRequestFragment"
+        android:label="WordSearchFragment"
+        tools:layout="@layout/fragment_pull_request"/>
+
+</navigation>

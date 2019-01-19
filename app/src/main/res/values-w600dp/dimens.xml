@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="subheader">38sp</dimen>
+    <dimen name="header">58sp</dimen>
+    <dimen name="smaller">30sp</dimen>
+    <dimen name="letter">16sp</dimen>
+
+    <dimen name="grid_margin">64sp</dimen>
+    <dimen name="grid_border_radius">14sp</dimen>
+</resources>

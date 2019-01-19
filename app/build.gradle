@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "io.jeffchang.splitdiff"
+        minSdkVersion 22
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Debugging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Networking
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.5.0'
+
+    // Converts JSON to POJO
+    implementation 'com.squareup.moshi:moshi-kotlin:1.8.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.8.0'
+
+    // RxJava 2
+    implementation "io.reactivex.rxjava2:rxjava:2.2.5"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+
+    implementation "com.google.dagger:dagger:$rootProject.dagger_version"
+
+    // Latest version of Dagger (2.17) doesn't support Android X.
+    //noinspection GradleDependency
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger_version"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha09'
+}
