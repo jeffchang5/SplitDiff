@@ -1,4 +1,4 @@
-package io.jeffchang.splitdiff.ui.gitdiff.adapter
+package io.jeffchang.splitdiff.ui.pullrequests.adapter
 
 import android.view.View
 import android.view.ViewGroup

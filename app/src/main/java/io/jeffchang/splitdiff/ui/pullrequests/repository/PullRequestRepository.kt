@@ -1,4 +1,4 @@
-package io.jeffchang.splitdiff.ui.gitdiff.repository
+package io.jeffchang.splitdiff.ui.pullrequests.repository
 
 import io.jeffchang.splitdiff.data.service.PullRequestService
 import javax.inject.Inject

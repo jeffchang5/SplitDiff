@@ -11,8 +11,8 @@ import dagger.android.support.DaggerFragment
 import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.data.model.pullrequest.PullRequest
 import io.jeffchang.splitdiff.ui.common.LineItemDecoration
-import io.jeffchang.splitdiff.ui.gitdiff.adapter.PullRequestRecyclerViewAdapter
-import io.jeffchang.splitdiff.ui.gitdiff.viewmodel.PullRequestViewModel
+import io.jeffchang.splitdiff.ui.pullrequests.adapter.PullRequestRecyclerViewAdapter
+import io.jeffchang.splitdiff.ui.pullrequests.viewmodel.PullRequestViewModel
 import kotlinx.android.synthetic.main.fragment_pull_request_list.*
 import javax.inject.Inject
 

@@ -1,6 +1,6 @@
-package io.jeffchang.splitdiff.ui.gitdiff.interactor
+package io.jeffchang.splitdiff.ui.pullrequests.interactor
 
-import io.jeffchang.splitdiff.ui.gitdiff.repository.PullRequestRepository
+import io.jeffchang.splitdiff.ui.pullrequests.repository.PullRequestRepository
 import javax.inject.Inject
 
 class PullRequestInteractor @Inject constructor(

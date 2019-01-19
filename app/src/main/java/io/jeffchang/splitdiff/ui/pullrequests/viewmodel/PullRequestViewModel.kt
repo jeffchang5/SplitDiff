@@ -1,17 +1,16 @@
-package io.jeffchang.splitdiff.ui.gitdiff.viewmodel
+package io.jeffchang.splitdiff.ui.pullrequests.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.data.model.TextData
 import io.jeffchang.splitdiff.data.model.pullrequest.PullRequest
-import io.jeffchang.splitdiff.ui.gitdiff.interactor.PullRequestInteractor
+import io.jeffchang.splitdiff.ui.pullrequests.interactor.PullRequestInteractor
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class PullRequestViewModel @Inject constructor(
