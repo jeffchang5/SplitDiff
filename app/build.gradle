@@ -29,6 +29,8 @@ dependencies {
 
     // Debugging
     implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 
     // Networking
     implementation 'com.squareup.okhttp3:okhttp:3.12.1'

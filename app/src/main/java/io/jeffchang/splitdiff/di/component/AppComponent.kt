@@ -9,6 +9,7 @@ import dagger.android.support.DaggerApplication
 import io.jeffchang.splitdiff.SplitDiffApplication
 import io.jeffchang.splitdiff.di.module.MainActivityModule
 import io.jeffchang.splitdiff.di.module.AppModule
+import io.jeffchang.splitdiff.di.module.NetworkModule
 import javax.inject.Singleton
 
 @Singleton
@@ -16,6 +17,7 @@ import javax.inject.Singleton
         modules = [
             AndroidSupportInjectionModule::class,
             AppModule::class,
+            NetworkModule::class,
             MainActivityModule::class
         ])
 interface AppComponent : AndroidInjector<DaggerApplication> {
@@ -29,6 +31,8 @@ interface AppComponent : AndroidInjector<DaggerApplication> {
 
         @BindsInstance
         fun application(application: Application): Builder
+
+        fun networkModule(networkModule: NetworkModule): Builder
 
         fun build(): AppComponent
     }

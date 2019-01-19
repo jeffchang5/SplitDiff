@@ -16,13 +16,4 @@ class AppModule {
     @Singleton
     fun provideContext(application: Application): Context = application
 
-    @Provides
-    @Singleton
-    fun provideOkHttpClient() = OkHttpClient()
-
-    @Provides
-    @Singleton
-    fun providWordSearchService(okHttpClient: OkHttpClient): PullRequestService =
-            PullRequestServiceImpl(okHttpClient)
-
 }
