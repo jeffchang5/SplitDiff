@@ -7,9 +7,15 @@
 
     <fragment
         android:id="@+id/pullRequestFragment"
-        android:name="io.jeffchang.splitdiff.ui.gitdiff.PullRequestFragment"
+        android:name="io.jeffchang.splitdiff.ui.pullrequests.PullRequestListFragment"
         android:label="WordSearchFragment"
-        tools:layout="@layout/fragment_pull_request" />
+        tools:layout="@layout/fragment_pull_request_list" />
+
+    <fragment
+        android:id="@+id/gitDiffFragment"
+        android:name="io.jeffchang.splitdiff.ui.gitdiff.GitDiffFragment"
+        android:label="WordSearchFragment"
+        tools:layout="@layout/fragment_pull_request_list" />
 
     <fragment
         android:id="@+id/pickRepoFragment"

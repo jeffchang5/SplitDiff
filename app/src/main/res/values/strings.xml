@@ -5,4 +5,9 @@
     <string name="repo">Repo</string>
     <string name="repo_sample">jeffchang5.github.io</string>
     <string name="next">Next</string>
+    <string name="pull_requests_empty">No pull requests</string>
+    <string name="error_failure">Couldn\'t load PRs</string>
+    <string name="loading">Loading…</string>
+
+    <string name="opened_by">Opened by </string>
 </resources>

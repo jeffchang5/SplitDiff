@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import io.jeffchang.splitdiff.common.di.ViewModelKey
 import io.jeffchang.splitdiff.common.kt.ViewModelFactory
-import io.jeffchang.splitdiff.ui.gitdiff.viewmodel.PullRequestViewModel
+import io.jeffchang.splitdiff.ui.pullrequests.viewmodel.PullRequestViewModel
 
 @Suppress("unused")
 @Module
