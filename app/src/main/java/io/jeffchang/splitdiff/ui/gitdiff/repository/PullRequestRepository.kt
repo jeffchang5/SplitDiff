@@ -7,4 +7,7 @@ class PullRequestRepository @Inject constructor(
         private val pullRequestService: PullRequestService
 ) {
 
+    fun getPullRequests(username: String, repository: String) =
+            pullRequestService.getPullRequests(username, repository)
+
 }

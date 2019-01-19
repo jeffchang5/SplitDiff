@@ -6,5 +6,8 @@ import javax.inject.Inject
 class PullRequestInteractor @Inject constructor(
         private val pullRequestRepository: PullRequestRepository) {
 
+    fun getPullRequests(username: String, repository: String) =
+            pullRequestRepository.getPullRequests(username, repository)
+
 
 }
