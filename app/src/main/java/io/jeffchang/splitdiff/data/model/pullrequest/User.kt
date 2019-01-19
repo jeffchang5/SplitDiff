@@ -5,7 +5,7 @@ data class User(
 	val reposUrl: String? = null,
 	val followingUrl: String? = null,
 	val starredUrl: String? = null,
-	val login: String? = null,
+	val login: String,
 	val followersUrl: String? = null,
 	val type: String? = null,
 	val url: String? = null,

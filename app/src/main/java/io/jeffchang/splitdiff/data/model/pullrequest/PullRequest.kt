@@ -31,7 +31,7 @@ data class PullRequest(
 	val htmlUrl: String? = null,
 	val reviewCommentsUrl: String? = null,
 	val assignee: Any? = null,
-	val user: User? = null,
+	val user: User,
 	val nodeId: String? = null,
-	val base: Base? = null
+	val base: Base
 )
