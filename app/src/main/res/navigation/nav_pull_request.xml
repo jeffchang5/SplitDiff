@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_pull_request_list" />
 
     <fragment
+        android:id="@+id/gitDiffFragment"
+        android:name="io.jeffchang.splitdiff.ui.gitdiff.GitDiffFragment"
+        android:label="WordSearchFragment"
+        tools:layout="@layout/fragment_pull_request_list" />
+
+    <fragment
         android:id="@+id/pickRepoFragment"
         android:name="io.jeffchang.splitdiff.ui.pickrepo.PickRepoFragment"
         android:label="pickRepoFragment"

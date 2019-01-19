@@ -12,8 +12,16 @@ class PullRequestRecyclerViewAdapter: ListAdapter<
         PullRequest,
         PullRequestRecyclerViewAdapter.PullRequestViewHolder>(PullRequestCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            PullRequestViewHolder(PullRequestItem(parent.context))
+    var onPullRequestClickedListener: OnPullRequestClickedListener? = null
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PullRequestViewHolder {
+        val viewHolder = PullRequestViewHolder(PullRequestItem(parent.context))
+        viewHolder.itemView.setOnClickListener {
+            val pullRequest = getItem(viewHolder.adapterPosition)
+            onPullRequestClickedListener?.onPullRequestClicked(pullRequest)
+        }
+        return viewHolder
+    }
 
     override fun onBindViewHolder(holder: PullRequestViewHolder, position: Int) {
         val pullRequest = getItem(position)
@@ -37,6 +45,12 @@ class PullRequestRecyclerViewAdapter: ListAdapter<
 
         override fun areContentsTheSame(oldItem: PullRequest, newItem: PullRequest) =
                 oldItem == newItem
+    }
+
+    interface OnPullRequestClickedListener {
+
+        fun onPullRequestClicked(pullRequest: PullRequest)
+
     }
 
 }

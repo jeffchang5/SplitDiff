@@ -5,22 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerFragment
 import io.jeffchang.splitdiff.R
+import io.jeffchang.splitdiff.data.model.pullrequest.PullRequest
 import io.jeffchang.splitdiff.ui.common.LineItemDecoration
 import io.jeffchang.splitdiff.ui.gitdiff.adapter.PullRequestRecyclerViewAdapter
 import io.jeffchang.splitdiff.ui.gitdiff.viewmodel.PullRequestViewModel
 import kotlinx.android.synthetic.main.fragment_pull_request_list.*
 import javax.inject.Inject
 
-class PullRequestListFragment: DaggerFragment() {
+class PullRequestListFragment: DaggerFragment(), PullRequestRecyclerViewAdapter.OnPullRequestClickedListener {
 
     @Inject
     lateinit var pullRequestViewModel: PullRequestViewModel
 
     private val pullRequestRecyclerViewAdapter by lazy {
-        PullRequestRecyclerViewAdapter()
+        val adapter = PullRequestRecyclerViewAdapter()
+        adapter.onPullRequestClickedListener = this
+        adapter
     }
 
     override fun onCreateView(
@@ -50,6 +54,14 @@ class PullRequestListFragment: DaggerFragment() {
         pullRequestViewModel.pullRequestLiveData.observe(this, Observer {
             pullRequestRecyclerViewAdapter.submitList(it)
         })
+    }
+
+    override fun onPullRequestClicked(pullRequest: PullRequest) {
+        findNavController(
+                activity!!,
+                R.id.activity_main_nav_host_fragment
+        )
+                .navigate(R.id.gitDiffFragment)
     }
 
 }

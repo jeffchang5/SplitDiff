@@ -2,6 +2,7 @@ package io.jeffchang.splitdiff.di.module
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import io.jeffchang.splitdiff.ui.gitdiff.GitDiffFragment
 import io.jeffchang.splitdiff.ui.pullrequests.PullRequestListFragment
 
 @Suppress("unused")
@@ -10,5 +11,8 @@ abstract class FragmentBuilderModule {
 
     @ContributesAndroidInjector
     abstract fun contributeWordSearchFragment(): PullRequestListFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeGitDiffFragment(): GitDiffFragment
 
 }
