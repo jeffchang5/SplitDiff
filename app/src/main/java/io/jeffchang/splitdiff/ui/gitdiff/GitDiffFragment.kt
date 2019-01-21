@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import dagger.android.support.DaggerFragment
 import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.ui.gitdiff.viewmodel.GitDiffViewModel
+import kotlinx.android.synthetic.main.fragment_git_diff.*
 import javax.inject.Inject
 
 class GitDiffFragment: DaggerFragment() {
@@ -35,7 +36,7 @@ class GitDiffFragment: DaggerFragment() {
 
         })
         gitDiffViewModel.gitDiffLiveData.observe(this, Observer {
-
+            diffView.hunk = it.first().hunks.first()
         })
     }
 

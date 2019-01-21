@@ -3,6 +3,7 @@ package io.jeffchang.splitdiff.ui.gitdiff.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.stkent.githubdiffparser.GitHubDiffParser
+import com.github.stkent.githubdiffparser.models.Diff
 import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.data.model.GitDiff
 import io.jeffchang.splitdiff.data.model.TextData
@@ -26,7 +27,7 @@ class GitDiffViewModel @Inject constructor(
 
     val textDataLiveData get() = _textDataLiveData
 
-    private val _gitDiffLiveData = MutableLiveData<List<GitDiff>>()
+    private val _gitDiffLiveData = MutableLiveData<List<Diff>>()
 
     val gitDiffLiveData get() = _gitDiffLiveData
 
@@ -36,6 +37,7 @@ class GitDiffViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     Timber.d("There are %s diffs.", it.size)
+                    _gitDiffLiveData.value = it
 
                 }, {
                     Timber.e(it)
