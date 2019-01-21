@@ -73,11 +73,10 @@ public class GitHubDiffParser {
 
         while ((currentLine = window.slideForward()) != null) {
             state = state.nextState(window, logToSout);
-            
+
             if (state == null) {
                 throw new IllegalStateException("Parser reached illegal state!");
             }
-            
             switch (state) {
                 case DIFF_START:
                     if (currentDiff.isNotEmpty()) {
@@ -106,6 +105,8 @@ public class GitHubDiffParser {
                     break;
                 case NEUTRAL_LINE:
                     parseNeutralLine(currentDiff, currentLine);
+                    break;
+                case END_OF_LINE:
                     break;
             }
         }

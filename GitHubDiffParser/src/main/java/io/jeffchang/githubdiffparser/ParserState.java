@@ -183,8 +183,10 @@ enum ParserState {
                 return transition(line, FROM_LINE, logToSout);
             } else if (matchesToLinePattern(line)) {
                 return transition(line, TO_LINE, logToSout);
-            } else if (matchesNeutralLinePattern(line) || matchesNoNewlineAtEndOfFileLinePattern(line)) {
+            } else if (matchesNeutralLinePattern(line)) {
                 return transition(line, NEUTRAL_LINE, logToSout);
+            } else if (matchesNoNewlineAtEndOfFileLinePattern(line)) {
+                return transition(line, END_OF_LINE, logToSout);
             } else if (matchesHunkStartPattern(line)) {
                 return transition(line, HUNK_START, logToSout);
             } else {
@@ -213,8 +215,10 @@ enum ParserState {
                 return transition(line, FROM_LINE, logToSout);
             } else if (matchesToLinePattern(line)) {
                 return transition(line, TO_LINE, logToSout);
-            } else if (matchesNeutralLinePattern(line) || matchesNoNewlineAtEndOfFileLinePattern(line)) {
+            } else if (matchesNeutralLinePattern(line)) {
                 return transition(line, NEUTRAL_LINE, logToSout);
+            } else if (matchesNoNewlineAtEndOfFileLinePattern(line)) {
+                return transition(line, END_OF_LINE, logToSout);
             } else if (matchesHunkStartPattern(line)) {
                 return transition(line, HUNK_START, logToSout);
             } else {
@@ -239,15 +243,42 @@ enum ParserState {
                 return transition(line, FROM_LINE, logToSout);
             } else if (matchesToLinePattern(line)) {
                 return transition(line, TO_LINE, logToSout);
-            } else if (matchesNeutralLinePattern(line) || matchesNoNewlineAtEndOfFileLinePattern(line)) {
+            } else if (matchesNeutralLinePattern(line)) {
                 return transition(line, NEUTRAL_LINE, logToSout);
+            } else if (matchesNoNewlineAtEndOfFileLinePattern(line)) {
+                return transition(line, END_OF_LINE, logToSout);
             } else if (matchesHunkStartPattern(line)) {
                 return transition(line, HUNK_START, logToSout);
             } else {
                 return transition(line, HEADER, logToSout);
             }
         }
-    };
+    },
+    END_OF_LINE {
+        @Nullable
+        @Override
+        public ParserState nextState(@NotNull final ParseWindow window, final boolean logToSout) {
+            String line = window.getFocusLine();
+
+            if (matchesDiffStartPattern(line)) {
+                return transition(line, DIFF_START, logToSout);
+            } else if (matchesFromLinePattern(line)) {
+                return transition(line, FROM_LINE, logToSout);
+            } else if (matchesToLinePattern(line)) {
+                return transition(line, TO_LINE, logToSout);
+            } else if (matchesNeutralLinePattern(line)) {
+                return transition(line, NEUTRAL_LINE, logToSout);
+            } else if (matchesNoNewlineAtEndOfFileLinePattern(line)) {
+                return transition(line, END_OF_LINE, logToSout);
+            } else if (matchesHunkStartPattern(line)) {
+                return transition(line, HUNK_START, logToSout);
+            } else {
+                return transition(line, HEADER, logToSout);
+            }
+        }
+    },
+
+    ;
 
     /**
      * Returns the next state of the state machine depending on the current state and the content of a window of lines around the line
