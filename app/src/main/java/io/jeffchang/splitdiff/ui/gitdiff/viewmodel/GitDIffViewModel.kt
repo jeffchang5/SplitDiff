@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import io.jeffchang.githubdiffparser.models.Diff
 import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.data.model.TextData
+import io.jeffchang.splitdiff.data.model.gitdiff.FileDiff
 import io.jeffchang.splitdiff.ui.gitdiff.interactor.GitDiffInteractor
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -25,7 +26,7 @@ class GitDiffViewModel @Inject constructor(
 
     val textDataLiveData get() = _textDataLiveData
 
-    private val _gitDiffLiveData = MutableLiveData<List<Diff>>()
+    private val _gitDiffLiveData = MutableLiveData<List<FileDiff>>()
 
     val gitDiffLiveData get() = _gitDiffLiveData
 

@@ -32,6 +32,8 @@
  */
 package io.jeffchang.githubdiffparser.models;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Represents a line of a Diff. A line is either contained in both files ("neutral"), only in the first file ("from"),
  * or only in the second file ("to").
@@ -77,6 +79,7 @@ public class Line {
      *
      * @return the type of this line.
      */
+    @NotNull
     public LineType getLineType() {
         return lineType;
     }

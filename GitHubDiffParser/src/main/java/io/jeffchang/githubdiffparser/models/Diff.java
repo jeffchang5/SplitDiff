@@ -89,6 +89,7 @@ public class Diff {
      *
      * @return list of all Hunks that are part of this Diff.
      */
+    @NotNull
     public List<Hunk> getHunks() {
         return hunks;
     }

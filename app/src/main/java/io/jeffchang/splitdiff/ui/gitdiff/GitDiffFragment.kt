@@ -36,7 +36,7 @@ class GitDiffFragment: DaggerFragment() {
 
         })
         gitDiffViewModel.gitDiffLiveData.observe(this, Observer {
-            diffView.hunk = it.first().hunks.first()
+            diffView.hunk = it.first().diffs.first().hunkList.first()
         })
     }
 

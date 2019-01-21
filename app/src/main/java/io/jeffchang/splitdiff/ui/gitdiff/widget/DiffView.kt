@@ -4,10 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.TextView
-import io.jeffchang.githubdiffparser.models.Hunk
-import io.jeffchang.githubdiffparser.models.Line
-import timber.log.Timber
+import io.jeffchang.splitdiff.common.kt.plusAssign
+import io.jeffchang.splitdiff.data.model.gitdiff.Hunk
+import java.lang.StringBuilder
 
 /**
  * View that shows the before and after states of a diff.
@@ -18,32 +17,26 @@ class DiffView @JvmOverloads constructor(
 
     private val beforeTextView = DiffTextView(context)
 
-    private val afterTextView = TextView(context)
+    private val afterTextView = DiffTextView(context)
 
-        var hunk: Hunk? = null
+    var hunk: Hunk? = null
         set(value) {
-            // Start with before state
-            Timber.d("sdfasdf")
-
-            val diff1 = ArrayList<String>()
-            val diff2 = ArrayList<String>()
-
-            value?.lines?.forEach {
-                when (it.lineType!!) {
-                    Line.LineType.FROM -> {
-                        diff1 += it.content
-                    }
-                    Line.LineType.NEUTRAL -> {
-                        diff1 += it.content
-                        diff2 += it.content
-                    }
-                    Line.LineType.TO -> {
-                        diff2 += it.content
-                    }
-                }
+            value?.fromList?.let {
+                setBeforeLines(it)
             }
-            Timber.d("sdfasdf")
+
         }
+
+    private fun setBeforeLines(fromList: List<String>) {
+        val stringBuilder = StringBuilder()
+        stringBuilder += fromList
+        beforeTextView.text = stringBuilder.toString()
+    }
+
+    private fun setAfterLines(afterList: List<String>) {
+
+    }
+
 
     init {
         val layoutParams = LayoutParams(
