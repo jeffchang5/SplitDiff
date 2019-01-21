@@ -2,10 +2,8 @@ package io.jeffchang.splitdiff.ui.gitdiff.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.github.stkent.githubdiffparser.GitHubDiffParser
-import com.github.stkent.githubdiffparser.models.Diff
+import io.jeffchang.githubdiffparser.models.Diff
 import io.jeffchang.splitdiff.R
-import io.jeffchang.splitdiff.data.model.GitDiff
 import io.jeffchang.splitdiff.data.model.TextData
 import io.jeffchang.splitdiff.ui.gitdiff.interactor.GitDiffInteractor
 import io.reactivex.android.schedulers.AndroidSchedulers

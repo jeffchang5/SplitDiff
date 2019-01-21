@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
-import com.github.stkent.githubdiffparser.models.Hunk
-import com.github.stkent.githubdiffparser.models.Line
+import io.jeffchang.githubdiffparser.models.Hunk
+import io.jeffchang.githubdiffparser.models.Line
 import timber.log.Timber
 
 /**

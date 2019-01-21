@@ -1,6 +1,6 @@
 package io.jeffchang.splitdiff.ui.gitdiff.repository
 
-import com.github.stkent.githubdiffparser.GitHubDiffParser
+import io.jeffchang.githubdiffparser.GitHubDiffParser
 import io.jeffchang.splitdiff.data.service.GitDiffService
 import io.jeffchang.splitdiff.data.service.PullRequestService
 import javax.inject.Inject

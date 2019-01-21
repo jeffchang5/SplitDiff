@@ -2,9 +2,9 @@ package io.jeffchang.splitdiff.di.module
 
 import android.app.Application
 import com.facebook.stetho.okhttp3.StethoInterceptor
-import com.github.stkent.githubdiffparser.GitHubDiffParser
 import dagger.Module
 import dagger.Provides
+import io.jeffchang.githubdiffparser.GitHubDiffParser
 import io.jeffchang.splitdiff.BuildConfig
 import io.jeffchang.splitdiff.data.service.GitDiffService
 import io.jeffchang.splitdiff.data.service.PullRequestService
