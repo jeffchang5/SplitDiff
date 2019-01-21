@@ -11,6 +11,7 @@ import dagger.android.support.DaggerFragment
 import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.data.model.pullrequest.PullRequest
 import io.jeffchang.splitdiff.ui.common.LineItemDecoration
+import io.jeffchang.splitdiff.ui.gitdiff.GitDiffFragment.Companion.GIT_DIFF_URL_ARG
 import io.jeffchang.splitdiff.ui.pullrequests.adapter.PullRequestRecyclerViewAdapter
 import io.jeffchang.splitdiff.ui.pullrequests.viewmodel.PullRequestViewModel
 import kotlinx.android.synthetic.main.fragment_pull_request_list.*
@@ -57,11 +58,13 @@ class PullRequestListFragment: DaggerFragment(), PullRequestRecyclerViewAdapter.
     }
 
     override fun onPullRequestClicked(pullRequest: PullRequest) {
+        val args = Bundle()
+        args.putString(GIT_DIFF_URL_ARG, pullRequest.diff_url)
         findNavController(
                 activity!!,
                 R.id.activity_main_nav_host_fragment
         )
-                .navigate(R.id.gitDiffFragment)
+                .navigate(R.id.gitDiffFragment, args)
     }
 
 }

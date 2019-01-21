@@ -2,9 +2,11 @@ package io.jeffchang.splitdiff.di.module
 
 import android.app.Application
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.github.stkent.githubdiffparser.GitHubDiffParser
 import dagger.Module
 import dagger.Provides
 import io.jeffchang.splitdiff.BuildConfig
+import io.jeffchang.splitdiff.data.service.GitDiffService
 import io.jeffchang.splitdiff.data.service.PullRequestService
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -55,4 +57,15 @@ class NetworkModule(
     @Singleton
     internal fun providePullRequestService(retrofit: Retrofit) =
             retrofit.create(PullRequestService::class.java)
+
+
+    @Provides
+    @Singleton
+    internal fun provideGitDiffService(retrofit: Retrofit) =
+            retrofit.create(GitDiffService::class.java)
+
+
+    @Provides
+    @Singleton
+    internal fun provideGitHubDiffParser() = GitHubDiffParser()
 }
