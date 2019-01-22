@@ -38,6 +38,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-moshi:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 
+    // Github Diff Parser
+    implementation project('::GitHubDiffParser')
+
     // Converts JSON to POJO
     implementation 'com.squareup.moshi:moshi-kotlin:1.8.0'
     kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.8.0'
@@ -52,6 +55,12 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
 
     implementation "com.google.dagger:dagger:$rootProject.dagger_version"
+
+    // Design
+    implementation 'com.google.android.material:material:1.0.0'
+
+    // Ktx
+    implementation 'androidx.core:core-ktx:1.0.1'
 
     // Latest version of Dagger (2.17) doesn't support Android X.
     //noinspection GradleDependency

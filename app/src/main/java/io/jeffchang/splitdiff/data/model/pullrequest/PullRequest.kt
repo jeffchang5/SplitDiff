@@ -3,7 +3,7 @@ package io.jeffchang.splitdiff.data.model.pullrequest
 data class PullRequest(
 	val issueUrl: String? = null,
 	val links: Links? = null,
-	val diffUrl: String? = null,
+	val diff_url: String,
 	val createdAt: String? = null,
 	val assignees: List<Any?>? = null,
 	val requestedReviewers: List<Any?>? = null,
