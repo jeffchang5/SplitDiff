@@ -7,18 +7,17 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
+import androidx.cardview.widget.CardView
 import androidx.core.view.GestureDetectorCompat
 import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.data.model.gitdiff.Hunk
-
 
 /**
  * View that shows the before and after states of a diff.
  */
 class DiffView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-    : FrameLayout(context, attrs, defStyleAttr) {
+    : CardView(context, attrs, defStyleAttr) {
 
     private val beforeTextView = DiffTextView(context)
 
@@ -55,6 +54,15 @@ class DiffView @JvmOverloads constructor(
             showDiffViewState(DiffTextView.DiffType.BEFORE)
         }
 
+    init {
+        val layoutParams = LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        addView(beforeTextView, layoutParams)
+        addView(afterTextView, layoutParams)
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         gestureDetector.onTouchEvent(event)
@@ -65,31 +73,12 @@ class DiffView @JvmOverloads constructor(
         return true
     }
 
-    private fun addSelectableBackground() {
-        val attrs = intArrayOf(R.attr.selectableItemBackground)
-        val typedArray = context.obtainStyledAttributes(attrs)
-        val backgroundResource = typedArray.getResourceId(0, 0)
-        setBackgroundResource(backgroundResource)
-        isClickable = true
-        typedArray.recycle()
-    }
-
-    init {
-        val layoutParams = LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-        addView(beforeTextView, layoutParams)
-        addView(afterTextView, layoutParams)
-        addSelectableBackground()
-    }
-
     private fun showDiffViewState(diffType: DiffTextView.DiffType) {
         if (diffType == DiffTextView.DiffType.BEFORE) {
             beforeTextView.visibility = View.VISIBLE
-            afterTextView.visibility = View.GONE
+            afterTextView.visibility = View.INVISIBLE
         } else if (diffType == DiffTextView.DiffType.AFTER) {
-            beforeTextView.visibility = View.GONE
+            beforeTextView.visibility = View.INVISIBLE
             afterTextView.visibility = View.VISIBLE
         }
     }

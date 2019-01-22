@@ -56,6 +56,8 @@ dependencies {
 
     implementation "com.google.dagger:dagger:$rootProject.dagger_version"
 
+    // Design
+    implementation 'com.google.android.material:material:1.0.0'
 
     // Ktx
     implementation 'androidx.core:core-ktx:1.0.1'
