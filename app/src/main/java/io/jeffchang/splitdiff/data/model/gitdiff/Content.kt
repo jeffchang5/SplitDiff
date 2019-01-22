@@ -1,7 +1,7 @@
 package io.jeffchang.splitdiff.data.model.gitdiff
 
 data class Content(
-        val content: String,
+        val text: String,
         val type: Type
 ) {
     enum class Type {
