@@ -24,7 +24,7 @@ class DiffView @JvmOverloads constructor(
 
     private val afterTextView = DiffTextView(context)
 
-    // Used to keep track if MotionEvent.UP action is from a long press.    
+    // Used to keep track if MotionEvent.UP action is from a long press.
     private var longClicked = false
 
     private val gestureDetector by lazy {
@@ -47,10 +47,12 @@ class DiffView @JvmOverloads constructor(
     var hunk: Hunk? = null
         set(value) {
             value?.fromList?.let {
-                beforeTextView.setDiffLines(DiffTextView.DiffType.BEFORE, it)
-                afterTextView.setDiffLines(DiffTextView.DiffType.AFTER, it)
-                showDiffViewState(DiffTextView.DiffType.BEFORE)
+                beforeTextView.setDiffLines(DiffTextView.DiffType.BEFORE, it, value.range)
             }
+            value?.toList?.let {
+                afterTextView.setDiffLines(DiffTextView.DiffType.AFTER, it, value.range)
+            }
+            showDiffViewState(DiffTextView.DiffType.BEFORE)
         }
 
     @SuppressLint("ClickableViewAccessibility")
