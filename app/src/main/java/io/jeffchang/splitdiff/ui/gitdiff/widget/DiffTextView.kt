@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import io.jeffchang.splitdiff.R
+import io.jeffchang.splitdiff.common.kt.appendNewLineIfNeeded
 import io.jeffchang.splitdiff.data.model.gitdiff.Content
 import io.jeffchang.splitdiff.ui.common.span
 
@@ -25,16 +26,15 @@ class DiffTextView @JvmOverloads constructor(
                 }
                 val color = ContextCompat.getColor(context, colorRes)
                 backgroundColor(color) {
-                    +it.content
+                    +(diffType.diffSymbol + it.content.appendNewLineIfNeeded)
                 }
             }
         }
-
         text = span.build()
     }
 
-    enum class DiffType(@ColorRes val color: Int) {
-        BEFORE(R.color.red),
-        AFTER(R.color.green)
+    enum class DiffType(@ColorRes val color: Int, val diffSymbol: String) {
+        BEFORE(R.color.red, "+"),
+        AFTER(R.color.green, "-")
     }
 }

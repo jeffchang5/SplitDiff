@@ -1,4 +1,8 @@
 package io.jeffchang.splitdiff.common.kt
 
-val String.hasNewLine: Boolean
-    get() = endsWith("\n")
+val String.appendNewLineIfNeeded: String
+    get() = if (endsWith("\n")) {
+        this
+    } else {
+        this + "\n"
+    }
