@@ -28,10 +28,10 @@ class DiffTextView @JvmOverloads constructor(
         typeface = Typeface.MONOSPACE
     }
 
-    fun setDiffLines(diffType: DiffType, fromList: List<Content>) {
+    fun setDiffLines(diffType: DiffType, contentList: List<Content>) {
         val span = span {
             // Goes through the list and create different spans, some with color, some without.
-            fromList.forEach { content ->
+            contentList.forEach { content ->
                 if (content.type == Content.Type.SAME) {
                     +content.text.appendNewLineIfNeeded
                     return@forEach
