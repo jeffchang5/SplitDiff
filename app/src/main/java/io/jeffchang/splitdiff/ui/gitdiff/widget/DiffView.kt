@@ -4,9 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import io.jeffchang.splitdiff.common.kt.plusAssign
+import io.jeffchang.splitdiff.data.model.gitdiff.Content
 import io.jeffchang.splitdiff.data.model.gitdiff.Hunk
-import java.lang.StringBuilder
+import io.jeffchang.splitdiff.ui.common.span
 
 /**
  * View that shows the before and after states of a diff.
@@ -22,16 +22,9 @@ class DiffView @JvmOverloads constructor(
     var hunk: Hunk? = null
         set(value) {
             value?.fromList?.let {
-                setBeforeLines(it)
+                beforeTextView.setDiffLines(DiffTextView.DiffType.BEFORE, it)
             }
-
         }
-
-    private fun setBeforeLines(fromList: List<String>) {
-        val stringBuilder = StringBuilder()
-        stringBuilder += fromList
-        beforeTextView.text = stringBuilder.toString()
-    }
 
     private fun setAfterLines(afterList: List<String>) {
 

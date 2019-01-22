@@ -1,6 +1,7 @@
 package io.jeffchang.splitdiff.ui.gitdiff.interactor
 
 import io.jeffchang.githubdiffparser.models.Line
+import io.jeffchang.splitdiff.data.model.gitdiff.Content
 import io.jeffchang.splitdiff.data.model.gitdiff.Diff
 import io.jeffchang.splitdiff.data.model.gitdiff.FileDiff
 import io.jeffchang.splitdiff.data.model.gitdiff.Hunk
@@ -16,19 +17,19 @@ class GitDiffInteractor @Inject constructor(
 
                         diffList.map { diff ->
                             val fileDiff = diff.hunks.map { hunk ->
-                                val fromLines = ArrayList<String>()
-                                val toLines = ArrayList<String>()
+                                val fromLines = ArrayList<Content>()
+                                val toLines = ArrayList<Content>()
                                 val hunkList = hunk.lines.map {
                                     when (it.lineType) {
                                         Line.LineType.FROM -> {
-                                            fromLines += it.content
+                                            fromLines += Content(it.content, Content.Type.CHANGE)
                                         }
                                         Line.LineType.NEUTRAL -> {
-                                            fromLines += it.content
-                                            toLines += it.content
+                                            fromLines += Content(it.content, Content.Type.SAME)
+                                            toLines += Content(it.content, Content.Type.SAME)
                                         }
                                         Line.LineType.TO -> {
-                                            toLines += it.content
+                                            toLines += Content(it.content, Content.Type.CHANGE)
                                         }
                                     }
                                     // Takes the larger range.
