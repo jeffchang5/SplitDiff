@@ -51,7 +51,6 @@ class PullRequestListFragment: DaggerFragment(), PullRequestRecyclerViewAdapter.
         pullRequestViewModel.textDataLiveData.observe(this, Observer {
             fragment_pull_request_loading_view.textData = it
         })
-
         pullRequestViewModel.pullRequestLiveData.observe(this, Observer {
             pullRequestRecyclerViewAdapter.submitList(it)
         })

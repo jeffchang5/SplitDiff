@@ -24,6 +24,10 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -58,6 +62,9 @@ dependencies {
 
     // Design
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.airbnb.android:epoxy:3.2.0'
+    // Add the annotation processor if you are using Epoxy's annotations (recommended)
+    kapt 'com.airbnb.android:epoxy-processor:3.2.0'
 
     // Ktx
     implementation 'androidx.core:core-ktx:1.0.1'
