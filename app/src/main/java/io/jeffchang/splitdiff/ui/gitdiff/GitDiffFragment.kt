@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.common.kt.withModels
@@ -15,6 +16,7 @@ import io.jeffchang.splitdiff.ui.gitdiff.widget.diffHeaderView
 import io.jeffchang.splitdiff.ui.gitdiff.widget.diffView
 import kotlinx.android.synthetic.main.fragment_git_diff.*
 import javax.inject.Inject
+
 
 class GitDiffFragment: DaggerFragment() {
 
@@ -29,6 +31,8 @@ class GitDiffFragment: DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        showHowToUseSnackBar()
 
         subscribeUi()
         arguments?.getString(GIT_DIFF_URL_ARG)?.let {
@@ -45,6 +49,20 @@ class GitDiffFragment: DaggerFragment() {
         gitDiffViewModel.gitDiffLiveData.observe(this, Observer {
             initEpoxy(it)
         })
+    }
+
+    private fun showHowToUseSnackBar() {
+        view?.let {
+            val snackbar = Snackbar.make(
+                    it,
+                    io.jeffchang.splitdiff.R.string.hold_diff,
+                    Snackbar.LENGTH_INDEFINITE
+            )
+            snackbar.setAction(android.R.string.ok) {
+                snackbar.dismiss()
+            }
+            snackbar.show()
+        }
     }
 
     private fun initEpoxy(diffList: List<Diff>) {

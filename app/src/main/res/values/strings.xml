@@ -11,4 +11,5 @@
 
     <string name="opened_by">Opened by </string>
     <string name="arrow">arrow</string>
+    <string name="hold_diff">Tap and hold diffs to see the changes.</string>
 </resources>
