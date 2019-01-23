@@ -48,6 +48,7 @@ class GitDiffFragment: DaggerFragment() {
     }
 
     private fun initEpoxy(diffList: List<Diff>) {
+        fragment_git_diff_epoxy_recyclerview.setItemSpacingDp(16)
         fragment_git_diff_epoxy_recyclerview.withModels {
             with(diffList) {
                 forEach { diff ->

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="subheader">18sp</dimen>
+    <dimen name="subheader">24sp</dimen>
     <dimen name="header">32sp</dimen>
     <dimen name="smaller">24sp</dimen>
     <dimen name="letter">9sp</dimen>
 
-    <dimen name="grid_margin">24sp</dimen>
+    <dimen name="grid_margin">12sp</dimen>
     <dimen name="grid_border_radius">7dp</dimen>
 </resources>
