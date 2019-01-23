@@ -8,8 +8,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/GitHubDiffParser" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/githubdiffparser" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

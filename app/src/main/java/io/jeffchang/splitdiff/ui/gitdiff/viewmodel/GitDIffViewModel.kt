@@ -34,7 +34,7 @@ class GitDiffViewModel @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    Timber.d("There are %s diffs.", it.size)
+                    Timber.d("There are %s hunks.", it.size)
                     _gitDiffLiveData.value = it
 
                 }, {

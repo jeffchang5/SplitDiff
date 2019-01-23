@@ -9,12 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.core.view.GestureDetectorCompat
+import com.airbnb.epoxy.AutoModel
+import com.airbnb.epoxy.ModelProp
+import com.airbnb.epoxy.ModelView
 import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.data.model.gitdiff.Hunk
 
 /**
  * View that shows the before and after states of a diff.
  */
+
+@ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class DiffView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : CardView(context, attrs, defStyleAttr) {
@@ -53,6 +58,12 @@ class DiffView @JvmOverloads constructor(
             }
             showDiffViewState(DiffTextView.DiffType.BEFORE)
         }
+
+    // You can annotate your methods with @ModelProp
+    @ModelProp
+    fun hunk(hunk: Hunk) {
+        this.hunk = hunk
+    }
 
     init {
         val layoutParams = LayoutParams(
