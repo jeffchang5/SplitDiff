@@ -2,6 +2,7 @@ package io.jeffchang.splitdiff.ui.gitdiff.widget
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
@@ -9,11 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.core.view.GestureDetectorCompat
-import com.airbnb.epoxy.AutoModel
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.data.model.gitdiff.Hunk
+
 
 /**
  * View that shows the before and after states of a diff.
@@ -48,7 +48,7 @@ class DiffView @JvmOverloads constructor(
         GestureDetectorCompat(context, gestureDetector)
     }
 
-    var hunk: Hunk? = null
+    private var hunk: Hunk? = null
         set(value) {
             value?.fromList?.let {
                 beforeTextView.setDiffLines(DiffTextView.DiffType.BEFORE, it, value.range)
@@ -82,6 +82,43 @@ class DiffView @JvmOverloads constructor(
             return true
         }
         return true
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        val view = findViewAtPosition(
+                this,
+                event.x.toInt(),
+                event.y.toInt()
+        )
+
+        // Handles the case that the finger leaves the boundaries of the DiffTextView and makes sure
+        // the state goes back to the original state.
+        if ((view !is DiffTextView) and
+                (event.action == MotionEvent.ACTION_UP)) {
+            showDiffViewState(DiffTextView.DiffType.BEFORE)
+            longClicked = false
+        }
+        return super.dispatchTouchEvent(event)
+    }
+
+
+    // Recursively finds views in ViewGroups recursively.
+    private fun findViewAtPosition(parent: View, x: Int, y: Int): View? {
+        if (parent is ViewGroup) {
+            for (i in 0 until parent.childCount) {
+                val child = parent.getChildAt(i)
+                return findViewAtPosition(child, x, y)
+            }
+            return null
+        } else {
+            val rect = Rect()
+            parent.getGlobalVisibleRect(rect)
+            return if (rect.contains(x, y)) {
+                parent
+            } else {
+                null
+            }
+        }
     }
 
     private fun showDiffViewState(diffType: DiffTextView.DiffType) {

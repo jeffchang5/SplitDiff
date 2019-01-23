@@ -36,7 +36,7 @@ class DiffTextView @JvmOverloads constructor(
             contentList.forEach { content ->
                 if (content.type == Content.Type.SAME) {
                     backgroundColor(muteGrey) {
-                        +(getColoredLine(diffType.diffSymbol, content.text))
+                        +(getColoredLine("", content.text))
                     }
                     return@forEach
                 }
@@ -61,7 +61,11 @@ class DiffTextView @JvmOverloads constructor(
     private fun getColoredLine(diffSymbol: String, content: String): String {
 
         // Pads all the lines with blank characters so it appears the entire line is colored.
-        val blanks = " ".repeat(findNumberOfCharsInLine() - content.length)
+        val numberOfBlanks = findNumberOfCharsInLine() - content.length
+        if (numberOfBlanks < 0) {
+            return (diffSymbol + content).appendNewLineIfNeeded
+        }
+        val blanks = " ".repeat(numberOfBlanks)
 
         return (diffSymbol + content + blanks).appendNewLineIfNeeded
     }
@@ -80,7 +84,6 @@ class DiffTextView @JvmOverloads constructor(
         val wordWidth = paint.measureText("a",0,1)
         val screenWidth = context.resources.displayMetrics.widthPixels
         return (screenWidth / wordWidth).toInt()
-
     }
 
     enum class DiffType(@ColorRes val color: Int?, val diffSymbol: String) {

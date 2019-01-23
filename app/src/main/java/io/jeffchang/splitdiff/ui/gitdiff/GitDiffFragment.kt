@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import dagger.android.support.DaggerFragment
 import io.jeffchang.splitdiff.R
@@ -37,7 +38,9 @@ class GitDiffFragment: DaggerFragment() {
 
     private fun subscribeUi() {
         gitDiffViewModel.textDataLiveData.observe(this, Observer {
-
+            it?.text?.let { textRes ->
+                Toast.makeText(context, textRes, Toast.LENGTH_LONG).show()
+            }
         })
         gitDiffViewModel.gitDiffLiveData.observe(this, Observer {
             initEpoxy(it)
@@ -61,7 +64,6 @@ class GitDiffFragment: DaggerFragment() {
                     }
                 }
             }
-
         }
     }
 
