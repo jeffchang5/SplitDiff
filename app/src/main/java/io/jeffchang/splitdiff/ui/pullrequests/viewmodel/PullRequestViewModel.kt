@@ -28,9 +28,9 @@ class PullRequestViewModel @Inject constructor(
 
     val pullRequestLiveData get() = _pullRequestLiveData
 
-    fun getPullRequests() {
+    fun getPullRequests(userName: String, repo: String) {
         textDataLiveData.value = TextData(R.string.loading)
-        pullRequestInteractor.getPullRequests("jeffchang5", "SplitDiff")
+        pullRequestInteractor.getPullRequests(userName, repo)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
