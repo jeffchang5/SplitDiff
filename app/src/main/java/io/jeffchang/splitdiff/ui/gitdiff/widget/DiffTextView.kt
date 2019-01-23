@@ -24,7 +24,7 @@ class DiffTextView @JvmOverloads constructor(
         textSize = 20f
 
         val dp16 = dpToPixel(16)
-        setPadding(dp16, dp16, dp16, dp16)
+        setPadding(dp16, dp16, dp16, 0)
 
         typeface = Typeface.MONOSPACE
     }

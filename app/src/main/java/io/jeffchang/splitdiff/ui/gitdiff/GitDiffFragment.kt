@@ -10,6 +10,7 @@ import io.jeffchang.splitdiff.R
 import io.jeffchang.splitdiff.common.kt.withModels
 import io.jeffchang.splitdiff.data.model.gitdiff.Diff
 import io.jeffchang.splitdiff.ui.gitdiff.viewmodel.GitDiffViewModel
+import io.jeffchang.splitdiff.ui.gitdiff.widget.diffHeaderView
 import io.jeffchang.splitdiff.ui.gitdiff.widget.diffView
 import kotlinx.android.synthetic.main.fragment_git_diff.*
 import javax.inject.Inject
@@ -47,6 +48,11 @@ class GitDiffFragment: DaggerFragment() {
         fragment_git_diff_epoxy_recyclerview.withModels {
             with(diffList) {
                 forEach { diff ->
+                    diffHeaderView {
+                        id("header_view")
+                        fromText(diff.fromName)
+                        toText(diff.toName)
+                    }
                     diff.hunks.forEach { hunk ->
                         diffView {
                             id("diff_view")

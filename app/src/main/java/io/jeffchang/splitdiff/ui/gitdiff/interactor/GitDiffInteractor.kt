@@ -41,7 +41,7 @@ class GitDiffInteractor @Inject constructor(
                                 Hunk(fromLines, toLines, maxRange)
 
                             }
-                            Diff(hunkList)
+                            Diff(diff.fromFileName, diff.toFileName, hunkList)
                         }
                     }
 
