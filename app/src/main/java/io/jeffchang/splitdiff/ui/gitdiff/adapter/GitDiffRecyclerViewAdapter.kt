@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import io.jeffchang.splitdiff.data.model.gitdiff.FileDiff
+import io.jeffchang.splitdiff.data.model.gitdiff.Diff
 import io.jeffchang.splitdiff.ui.pullrequests.widget.PullRequestItem
 
 class GitDiffRecyclerViewAdapter: ListAdapter<
-        FileDiff,
+        Diff,
         GitDiffRecyclerViewAdapter.GitDiffViewHolder>(GitDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GitDiffViewHolder {
@@ -26,12 +26,12 @@ class GitDiffRecyclerViewAdapter: ListAdapter<
 
     }
 
-    internal class GitDiffCallback: DiffUtil.ItemCallback<FileDiff>() {
+    internal class GitDiffCallback: DiffUtil.ItemCallback<Diff>() {
 
-        override fun areItemsTheSame(oldItem: FileDiff, newItem: FileDiff) =
+        override fun areItemsTheSame(oldItem: Diff, newItem: Diff) =
                 oldItem == newItem
 
-        override fun areContentsTheSame(oldItem: FileDiff, newItem: FileDiff) =
+        override fun areContentsTheSame(oldItem: Diff, newItem: Diff) =
                 oldItem == newItem
     }
 
