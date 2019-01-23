@@ -10,6 +10,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
+import retrofit2.HttpException
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -41,8 +42,13 @@ class PullRequestViewModel @Inject constructor(
                         _textDataLiveData.value = null
                         _pullRequestLiveData.value = it
                     }
-                }, {
-                    Timber.e(it)
+                }, { throwable ->
+                    Timber.e(throwable)
+                    (throwable as? HttpException)?.let {
+                        if (it.code() == 404) {
+                            textDataLiveData.value = TextData(R.string.repo_does_not_exist)
+                        }
+                    }
                     textDataLiveData.value = TextData(R.string.error_failure)
                 })
                 .addTo(compositeDisposable)
