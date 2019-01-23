@@ -38,7 +38,14 @@ class PullRequestListFragment: DaggerFragment(), PullRequestRecyclerViewAdapter.
         super.onViewCreated(view, savedInstanceState)
         subscribeUi()
         initRecyclerView()
-        pullRequestViewModel.getPullRequests()
+
+        arguments?.let {
+            val userName = it.getString(PULL_REQUEST_LIST_USERNAME_ARG)
+                    ?: throw RuntimeException("Pull Request Username should not be null")
+            val repo = it.getString(PULL_REQUEST_LIST_REPO_ARG)
+                    ?: throw RuntimeException("Pull Request Repo should not be null")
+            pullRequestViewModel.getPullRequests(userName, repo)
+        }
     }
 
     private fun initRecyclerView() {
@@ -66,4 +73,11 @@ class PullRequestListFragment: DaggerFragment(), PullRequestRecyclerViewAdapter.
                 .navigate(R.id.gitDiffFragment, args)
     }
 
+    companion object {
+
+        const val PULL_REQUEST_LIST_USERNAME_ARG = "PULL_REQUEST_LIST_USERNAME_ARG"
+
+        const val PULL_REQUEST_LIST_REPO_ARG = "PULL_REQUEST_LIST_REPO_ARG"
+
+    }
 }

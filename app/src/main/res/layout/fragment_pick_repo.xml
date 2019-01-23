@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
@@ -17,9 +16,9 @@
         android:textSize="@dimen/header"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:text="@string/username"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/username" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/fragment_pick_repo_username_edit_text"
@@ -27,12 +26,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:textSize="@dimen/header"
+        android:textSize="@dimen/subheader"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:hint="@string/username_sample"
         app:layout_constraintTop_toBottomOf="@id/fragment_pick_repo_username_text_view"
-        app:layout_constraintStart_toStartOf="parent"
-        android:hint="@string/username_sample" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/fragment_pick_repo_repo_text_view"
@@ -44,9 +43,9 @@
         android:textSize="@dimen/header"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:text="@string/repo"
         app:layout_constraintTop_toBottomOf="@id/fragment_pick_repo_username_edit_text"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/repo" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/fragment_pick_repo_repo_edit_text"
@@ -54,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:textSize="@dimen/header"
+        android:textSize="@dimen/subheader"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:hint="@string/repo_sample"
